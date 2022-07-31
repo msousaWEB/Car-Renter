@@ -14,18 +14,10 @@ class CarBrandController extends Controller
      */
     public function index()
     {
-        //
+        $carBrands = CarBrand::all();
+        return $carBrands;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +27,9 @@ class CarBrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $carBrand = CarBrand::create($request->all());
+        // dd($brand);
+        return $carBrand;
     }
 
     /**
@@ -46,18 +40,7 @@ class CarBrandController extends Controller
      */
     public function show(CarBrand $carBrand)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\CarBrand  $carBrand
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(CarBrand $carBrand)
-    {
-        //
+        return $carBrand;
     }
 
     /**
@@ -69,7 +52,8 @@ class CarBrandController extends Controller
      */
     public function update(Request $request, CarBrand $carBrand)
     {
-        //
+        $carBrand->update($request->all());
+        return $carBrand;
     }
 
     /**
@@ -80,6 +64,7 @@ class CarBrandController extends Controller
      */
     public function destroy(CarBrand $carBrand)
     {
-        //
+        $carBrand->delete();
+        return ['msg' => 'Marca deletada com sucesso!'];
     }
 }
