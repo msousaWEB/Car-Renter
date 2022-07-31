@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class CarBrandController extends Controller
 {
+    public function __construct(CarBrand $carBrand)
+    {
+        $this->carBrand = $carBrand; 
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +20,9 @@ class CarBrandController extends Controller
      */
     public function index()
     {
-        $carBrands = CarBrand::all();
-        return $carBrands;
+        // $carBrands = CarBrand::all();
+        $carBrands = $this->carBrand->all();
+        return response()->json($carBrands, 200);
     }
 
 
@@ -27,44 +34,82 @@ class CarBrandController extends Controller
      */
     public function store(Request $request)
     {
-        $carBrand = CarBrand::create($request->all());
+        // $carBrand = CarBrand::create($request->all());
         // dd($brand);
-        return $carBrand;
+
+        $request->validate($this->carBrand->rules(), $this->carBrand->feedback());
+        $carBrand = $this->carBrand->create($request->all());
+
+        return response()->json($carBrand, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\CarBrand  $carBrand
+     * @param  Integer
      * @return \Illuminate\Http\Response
      */
-    public function show(CarBrand $carBrand)
+    public function show($id)
     {
-        return $carBrand;
+        $carBrand = $this->carBrand->find($id);
+        if($carBrand === null) {
+            return response()->json(['error' => 'Não foi possível encontrar esta marca!'], 404);
+        }
+
+        return response()->json($carBrand, 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\CarBrand  $carBrand
+     * @param  Integer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CarBrand $carBrand)
+    public function update(Request $request, $id)
     {
+        // $carBrand->update($request->all());
+        $carBrand = $this->carBrand->find($id);
+
+        if($carBrand === null) {
+            return response()->json(['error' => 'Não foi possível atualizar esta marca!'], 404);
+        }
+
+        if($request->method() === 'PATCH') {
+            $dynamicRules = array();
+            //Percorre as regras definidas no Model
+            foreach($carBrand as $input => $rule) {
+                //Coleta apenas as regras aplicáveis nos parametros recebidos
+                if(array_key_exists($input, $request->all())){
+                    $dynamicRules[$input] = $rule;
+                }
+            }
+
+            $request->validate($dynamicRules, $carBrand->feedback());
+        } else {
+            $request->validate($carBrand->rules(), $carBrand->feedback());
+        }
+
         $carBrand->update($request->all());
-        return $carBrand;
+        return response()->json($carBrand, 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\CarBrand  $carBrand
+     * @param  Integer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CarBrand $carBrand)
+    public function destroy($id)
     {
+        // $carBrand->delete();
+        $carBrand = $this->carBrand->find($id);
+
+        if($carBrand === null) {
+            return response()->json(['error' => 'Não foi possível apagar esta marca!'], 404);
+        }
+
         $carBrand->delete();
-        return ['msg' => 'Marca deletada com sucesso!'];
+        return response()->json(['msg' => 'Marca deletada com sucesso!'], 200);
     }
 }

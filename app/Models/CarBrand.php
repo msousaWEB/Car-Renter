@@ -9,4 +9,19 @@ class CarBrand extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'image'];
+
+    public function rules() {
+        return [
+            'name' => 'required|unique:car_brands,name,'.$this->id.'|min:3',
+            'image' => 'required'
+        ];
+    }
+
+    public function feedback() {
+        return [
+            'required' => 'Este campo é obrigatório!',
+            'name.unique' => 'Este nome já está sendo utilizado!',
+            'name.min' => 'O nome deve ter no mínimo 3 caracteres!'
+        ];
+    }
 }
