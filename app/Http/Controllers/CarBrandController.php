@@ -20,7 +20,6 @@ class CarBrandController extends Controller
      */
     public function index()
     {
-        // $carBrands = CarBrand::all();
         $carBrands = $this->carBrand->all();
         return response()->json($carBrands, 200);
     }
@@ -34,11 +33,15 @@ class CarBrandController extends Controller
      */
     public function store(Request $request)
     {
-        // $carBrand = CarBrand::create($request->all());
-        // dd($brand);
-
         $request->validate($this->carBrand->rules(), $this->carBrand->feedback());
-        $carBrand = $this->carBrand->create($request->all());
+
+        $image = $request->file('image');
+        $image_urn = $image->store('images', 'public');
+
+        $carBrand = $this->carBrand->create([
+            'name' => $request->name,
+            'image' => $image_urn
+        ]);
 
         return response()->json($carBrand, 201);
     }
@@ -52,6 +55,7 @@ class CarBrandController extends Controller
     public function show($id)
     {
         $carBrand = $this->carBrand->find($id);
+
         if($carBrand === null) {
             return response()->json(['error' => 'Não foi possível encontrar esta marca!'], 404);
         }
@@ -68,7 +72,6 @@ class CarBrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $carBrand->update($request->all());
         $carBrand = $this->carBrand->find($id);
 
         if($carBrand === null) {
@@ -77,12 +80,15 @@ class CarBrandController extends Controller
 
         if($request->method() === 'PATCH') {
             $dynamicRules = array();
+
             //Percorre as regras definidas no Model
             foreach($carBrand as $input => $rule) {
+
                 //Coleta apenas as regras aplicáveis nos parametros recebidos
                 if(array_key_exists($input, $request->all())){
                     $dynamicRules[$input] = $rule;
                 }
+
             }
 
             $request->validate($dynamicRules, $carBrand->feedback());
@@ -102,7 +108,6 @@ class CarBrandController extends Controller
      */
     public function destroy($id)
     {
-        // $carBrand->delete();
         $carBrand = $this->carBrand->find($id);
 
         if($carBrand === null) {
