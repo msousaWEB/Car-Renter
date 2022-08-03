@@ -96,7 +96,14 @@ class CarBrandController extends Controller
             $request->validate($carBrand->rules(), $carBrand->feedback());
         }
 
-        $carBrand->update($request->all());
+        $image = $request->file('image');
+        $image_urn = $image->store('images', 'public');
+
+        $carBrand->update([
+            'name' => $request->name,
+            'image' => $image_urn
+        ]);
+        
         return response()->json($carBrand, 200);
     }
 
