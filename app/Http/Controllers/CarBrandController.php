@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CarBrand;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CarBrandController extends Controller
 {
@@ -96,6 +97,11 @@ class CarBrandController extends Controller
             $request->validate($carBrand->rules(), $carBrand->feedback());
         }
 
+        //Remove a imagem anterior
+        if($request->file('image')) {
+            Storage::disk('public')->delete($carBrand->image);
+        }
+
         $image = $request->file('image');
         $image_urn = $image->store('images', 'public');
 
@@ -103,7 +109,7 @@ class CarBrandController extends Controller
             'name' => $request->name,
             'image' => $image_urn
         ]);
-        
+
         return response()->json($carBrand, 200);
     }
 
@@ -120,6 +126,9 @@ class CarBrandController extends Controller
         if($carBrand === null) {
             return response()->json(['error' => 'Não foi possível apagar esta marca!'], 404);
         }
+
+        //Remove a imagem anterior
+        Storage::disk('public')->delete($carBrand->image);
 
         $carBrand->delete();
         return response()->json(['msg' => 'Marca deletada com sucesso!'], 200);
