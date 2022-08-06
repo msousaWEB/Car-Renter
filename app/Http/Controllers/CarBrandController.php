@@ -16,12 +16,33 @@ class CarBrandController extends Controller
 
     /**
      * Display a listing of the resource.
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $carBrands = $this->carBrand->with('models')->get();
+        $carBrands = array();
+        if($request->has('model_attributes')){
+            $model_attributes = $request->get('model_attributes');
+            $carBrands = $this->carBrand->with('models:id,'.$model_attributes);
+        } else {
+            $carBrands = $this->carBrand->with('models');
+        }
+
+        if($request->has('query')){
+            $query = explode(';', $request->get('query'));
+            foreach($query as $key => $q) {
+                $querys = explode(':', $q);
+                $carBrands = $carBrands->where($querys[0], $querys[1], $querys[2]);
+            }
+        }
+
+        if($request->has('attributes')){
+            $attributes = $request->get('attributes');
+            $carBrands = $carBrands->selectRaw($attributes)->get();
+        } else {
+            $carBrands = $carBrands->get();
+        }
 
         return response()->json($carBrands, 200);
     }
