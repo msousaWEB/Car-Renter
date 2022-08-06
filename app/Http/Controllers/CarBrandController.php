@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CarBrand;
+use App\Repositories\CarBrandRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -21,30 +22,29 @@ class CarBrandController extends Controller
      */
     public function index(Request $request)
     {
-        $carBrands = array();
+
+        $carBrandRepo = new CarBrandRepository($this->carBrand);
+
+
         if($request->has('model_attributes')){
             $model_attributes = $request->get('model_attributes');
-            $carBrands = $this->carBrand->with('models:id,'.$model_attributes);
+
+            $carBrandRepo->selectAttributesRegisterRelated('models:id,'.$model_attributes);
         } else {
-            $carBrands = $this->carBrand->with('models');
+            $carBrandRepo->selectAttributesRegisterRelated('models');
         }
 
         if($request->has('query')){
-            $query = explode(';', $request->get('query'));
-            foreach($query as $key => $q) {
-                $querys = explode(':', $q);
-                $carBrands = $carBrands->where($querys[0], $querys[1], $querys[2]);
-            }
+            $carBrandRepo->queryFilter($request->get('query'));
         }
 
         if($request->has('attributes')){
-            $attributes = $request->get('attributes');
-            $carBrands = $carBrands->selectRaw($attributes)->get();
-        } else {
-            $carBrands = $carBrands->get();
-        }
+            $carBrandRepo->SelectAttributes($request->get('attributes'));
+        } 
 
-        return response()->json($carBrands, 200);
+
+
+        return response()->json($carBrandRepo->getResult(), 200);
     }
 
 
