@@ -21,7 +21,7 @@ class CarBrandController extends Controller
      */
     public function index()
     {
-        $carBrands = $this->carBrand->all();
+        $carBrands = $this->carBrand->with('models')->get();
         return response()->json($carBrands, 200);
     }
 
@@ -55,7 +55,7 @@ class CarBrandController extends Controller
      */
     public function show($id)
     {
-        $carBrand = $this->carBrand->find($id);
+        $carBrand = $this->carBrand->with('models')->find($id);
 
         if($carBrand === null) {
             return response()->json(['error' => 'Não foi possível encontrar esta marca!'], 404);

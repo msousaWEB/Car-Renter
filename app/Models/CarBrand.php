@@ -25,4 +25,8 @@ class CarBrand extends Model
             'image.mimes' => 'A imagem deve ser .png!'
         ];
     }
+
+    public function models() {
+        return $this->hasMany(CarModel::class, 'brand_id');
+    }
 }
