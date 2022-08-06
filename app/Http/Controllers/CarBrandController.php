@@ -22,6 +22,7 @@ class CarBrandController extends Controller
     public function index()
     {
         $carBrands = $this->carBrand->with('models')->get();
+
         return response()->json($carBrands, 200);
     }
 
@@ -35,10 +36,8 @@ class CarBrandController extends Controller
     public function store(Request $request)
     {
         $request->validate($this->carBrand->rules(), $this->carBrand->feedback());
-
         $image = $request->file('image');
         $image_urn = $image->store('images', 'public');
-
         $carBrand = $this->carBrand->create([
             'name' => $request->name,
             'image' => $image_urn
@@ -56,7 +55,6 @@ class CarBrandController extends Controller
     public function show($id)
     {
         $carBrand = $this->carBrand->with('models')->find($id);
-
         if($carBrand === null) {
             return response()->json(['error' => 'Não foi possível encontrar esta marca!'], 404);
         }
@@ -74,41 +72,32 @@ class CarBrandController extends Controller
     public function update(Request $request, $id)
     {
         $carBrand = $this->carBrand->find($id);
-
         if($carBrand === null) {
             return response()->json(['error' => 'Não foi possível atualizar esta marca!'], 404);
         }
-
         if($request->method() === 'PATCH') {
             $dynamicRules = array();
-
             //Percorre as regras definidas no Model
             foreach($carBrand as $input => $rule) {
-
                 //Coleta apenas as regras aplicáveis nos parametros recebidos
                 if(array_key_exists($input, $request->all())){
                     $dynamicRules[$input] = $rule;
                 }
-
             }
-
             $request->validate($dynamicRules, $carBrand->feedback());
         } else {
             $request->validate($carBrand->rules(), $carBrand->feedback());
         }
-
         //Remove a imagem anterior
         if($request->file('image')) {
             Storage::disk('public')->delete($carBrand->image);
         }
-
         $image = $request->file('image');
         $image_urn = $image->store('images', 'public');
 
-        $carBrand->update([
-            'name' => $request->name,
-            'image' => $image_urn
-        ]);
+        $carBrand->fill($request->all());
+        $carBrand->image = $image_urn;
+        $carBrand->save();
 
         return response()->json($carBrand, 200);
     }
@@ -122,15 +111,13 @@ class CarBrandController extends Controller
     public function destroy($id)
     {
         $carBrand = $this->carBrand->find($id);
-
         if($carBrand === null) {
             return response()->json(['error' => 'Não foi possível apagar esta marca!'], 404);
         }
-
         //Remove a imagem anterior
         Storage::disk('public')->delete($carBrand->image);
-
         $carBrand->delete();
+
         return response()->json(['msg' => 'Marca deletada com sucesso!'], 200);
     }
 }
