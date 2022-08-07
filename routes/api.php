@@ -28,8 +28,8 @@ Route::prefix('v1')->middleware('jwt.auth')->group(function() {
     //User routes
     Route::post('me', 'AuthController@me');
     Route::post('refresh', 'AuthController@refresh');
+    Route::post('logout', 'AuthController@logout');
 });
 
 
 Route::post('login', 'AuthController@login');
-Route::post('logout', 'AuthController@logout');
