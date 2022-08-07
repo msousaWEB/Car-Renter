@@ -24,10 +24,12 @@ Route::prefix('v1')->middleware('jwt.auth')->group(function() {
     Route::apiResource('car', 'CarController');
     Route::apiResource('car-model', 'CarModelController');
     Route::apiResource('car-brand', 'CarBrandController');
+
+    //User routes
+    Route::post('me', 'AuthController@me');
 });
 
 
 Route::post('login', 'AuthController@login');
 Route::post('logout', 'AuthController@logout');
 Route::post('refresh', 'AuthController@refresh');
-Route::post('me', 'AuthController@me');
