@@ -23,3 +23,8 @@ Route::apiResource('renter', 'RenterController');
 Route::apiResource('car', 'CarController');
 Route::apiResource('car-model', 'CarModelController');
 Route::apiResource('car-brand', 'CarBrandController');
+
+Route::post('login', 'AuthController@login');
+Route::post('logout', 'AuthController@logout');
+Route::post('refresh', 'AuthController@refresh');
+Route::post('me', 'AuthController@me');
