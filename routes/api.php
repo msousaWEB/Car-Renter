@@ -18,11 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('customer', 'CustomerController');
-Route::apiResource('renter', 'RenterController');
-Route::apiResource('car', 'CarController');
-Route::apiResource('car-model', 'CarModelController');
-Route::apiResource('car-brand', 'CarBrandController');
+Route::apiResource('customer', 'CustomerController')->middleware('jwt.auth');
+Route::apiResource('renter', 'RenterController')->middleware('jwt.auth');
+Route::apiResource('car', 'CarController')->middleware('jwt.auth');
+Route::apiResource('car-model', 'CarModelController')->middleware('jwt.auth');
+Route::apiResource('car-brand', 'CarBrandController')->middleware('jwt.auth');
 
 Route::post('login', 'AuthController@login');
 Route::post('logout', 'AuthController@logout');
