@@ -25,10 +25,8 @@ class CarBrandController extends Controller
 
         $carBrandRepo = new CarBrandRepository($this->carBrand);
 
-
         if($request->has('model_attributes')){
             $model_attributes = $request->get('model_attributes');
-
             $carBrandRepo->selectAttributesRegisterRelated('models:id,'.$model_attributes);
         } else {
             $carBrandRepo->selectAttributesRegisterRelated('models');
@@ -41,8 +39,6 @@ class CarBrandController extends Controller
         if($request->has('attributes')){
             $carBrandRepo->SelectAttributes($request->get('attributes'));
         } 
-
-
 
         return response()->json($carBrandRepo->getResult(), 200);
     }
