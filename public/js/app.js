@@ -5361,7 +5361,7 @@ var staticRenderFns = [function () {
     staticClass: "card"
   }, [_c("div", {
     staticClass: "card-header"
-  }, [_vm._v("Login (vue)")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Entrar")]), _vm._v(" "), _c("div", {
     staticClass: "card-body"
   }, [_c("form", {
     attrs: {
