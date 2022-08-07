@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     use HasFactory;
+    protected $fillable = ['name'];
+
+    public function rules() {
+        return [
+            'name' => 'required',
+        ];
+    }
+
+    // public function car() {
+    //     return $this->belongsTo(CarModel::class);
+    // }
 }
