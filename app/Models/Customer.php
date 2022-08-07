@@ -15,8 +15,4 @@ class Customer extends Model
             'name' => 'required',
         ];
     }
-
-    // public function car() {
-    //     return $this->belongsTo(CarModel::class);
-    // }
 }
