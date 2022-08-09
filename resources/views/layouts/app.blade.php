@@ -45,7 +45,7 @@
                                 <div class="dropdown-menu">
                                     <a href="#" class="dropdown-item">Carros</a>
                                     <div class="dropdown-divider"></div>
-                                    <a href="#" class="dropdown-item">Marcas</a>
+                                    <a href="{{ route('brands') }}" class="dropdown-item">Marcas</a>
                                     <a href="#" class="dropdown-item">Modelos</a>
                                 </div>
                             </li>
