@@ -5271,7 +5271,10 @@ __webpack_require__.r(__webpack_exports__);
     return {
       baseUrl: 'http://localhost:8000/api/v1/car-brand',
       brandName: '',
-      brandImage: []
+      brandImage: [],
+      token: document.cookie.split('; ').find(function (row) {
+        return row.startsWith('token=');
+      }).split('=')[1]
     };
   },
   methods: {
@@ -5286,7 +5289,8 @@ __webpack_require__.r(__webpack_exports__);
       var config = {
         headers: {
           'Content-Type': 'multipart/form-data',
-          'Accept': 'application/json'
+          'Accept': 'application/json',
+          'Authorization': 'bearer ' + this.token
         }
       }; // enviando os parametros para o axios
 

@@ -68,7 +68,8 @@
             return {
                 baseUrl: 'http://localhost:8000/api/v1/car-brand',
                 brandName: '',
-                brandImage: []
+                brandImage: [],
+                token: document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1]
             }
         },
         methods: {
@@ -85,7 +86,8 @@
                 let config = {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        'Accept': 'application/json'
+                        'Accept': 'application/json',
+                        'Authorization': 'bearer ' + this.token
                     }
                 }
 
