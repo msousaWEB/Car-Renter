@@ -43,19 +43,19 @@
             <template v-slot:content>
                 <div class="form-group">
                     <input-container-component title="Marca" id="newName" idHelp="newHelp" helpText="Informe o nome da marca.">  
-                        <input type="text" class="form-control" id="newName" aria-describedby="newHelp" placeholder="Nome da marca">
+                        <input v-model="brandName" type="text" class="form-control" id="newName" aria-describedby="newHelp" placeholder="Nome da marca">
                     </input-container-component>
                  </div>
 
                 <div class="form-group">
                     <input-container-component title="Logo da marca" id="newImage" idHelp="imageHelp" helpText="Selecione a logo da marca.">  
-                        <input type="file" class="form-control-file" id="newImage" aria-describedby="imageHelp" placeholder="Imagem da marca">
+                        <input @change="loadImage($event)" type="file" class="form-control-file" id="newImage" aria-describedby="imageHelp" placeholder="Imagem da marca">
                     </input-container-component>
                 </div>
             </template>
             <template v-slot:footer>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Salvar</button>
+                <button type="button" class="btn btn-primary" @click="save()">Salvar</button>
             </template>
         </modal-component>
 
@@ -63,5 +63,41 @@
 </template>
 
 <script>
+    export default{
+        data() {
+            return {
+                baseUrl: 'http://localhost:8000/api/v1/car-brand',
+                brandName: '',
+                brandImage: []
+            }
+        },
+        methods: {
+            loadImage(e) {
+                this.brandImage = e.target.files
+            },
+            save() {
 
+                // programando o form semelhante ao postman
+                let formData = new FormData();
+                formData.append('name', this.brandName)
+                formData.append('image', this.brandImage[0])
+
+                let config = {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                        'Accept': 'application/json'
+                    }
+                }
+
+                // enviando os parametros para o axios
+                axios.post(this.baseUrl, formData, config)
+                    .then(response => {
+                        console.log(response)
+                    })
+                    .catch(errors => {
+                        console.log(errors)
+                    })
+            }
+        }
+    }
 </script>
