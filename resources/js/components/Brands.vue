@@ -3,10 +3,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <!-- CARD DE BUSCA -->
-            <div class="card mb-5">
-                <div class="card-header">Marcas</div>
-
-                <div class="card-body">
+            <card-component title="Buscar marcas">
+                <template v-slot:content>
                     <div class="row">
                         <div class="col mb-3">
                             <input-container-component title="ID" id="inputId" idHelp="idHelp" helpText="Opcional: informe o id da marca.">  
@@ -21,27 +19,23 @@
                             </input-container-component>
                         </div>
                     </div>
-                </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary btn-sm float-end">Pesquisar</button>
-                </div>
+                </template>
 
-            </div>
+                <template v-slot:footer>
+                    <button type="submit" class="btn btn-primary btn-sm float-end">Pesquisar</button>
+                </template>
+            </card-component>
             <!-- FIM CARD DE BUSCA -->
 
             <!-- CARD LISTAGEM DE MARCAS -->
-            <div class="card">
-                <div class="card-header">Relação de marcas</div>
-
-                <div class="card-body">
+            <card-component title="Relação de marcas">
+                <template v-slot:content>
                     <table-component></table-component>
-                </div>
-
-                <div class="card-footer">
+                </template>
+                 <template v-slot:footer>
                     <button type="submit" class="btn btn-primary btn-sm float-end">Adicionar</button>
-                </div>
-
-            </div>
+                </template>
+            </card-component>
             <!-- FIM CARD LISTAGEM DE MARCAS -->
         </div>
     </div>
