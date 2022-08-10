@@ -39,7 +39,25 @@
                 <!-- FIM CARD LISTAGEM DE MARCAS -->
             </div>
         </div>
-        <modal-component id="brandModal" title="Adicionar marca"></modal-component>
+        <modal-component id="brandModal" title="Adicionar marca">
+            <template v-slot:content>
+                <div class="form-group">
+                    <input-container-component title="Marca" id="newName" idHelp="newHelp" helpText="Informe o nome da marca.">  
+                        <input type="text" class="form-control" id="newName" aria-describedby="newHelp" placeholder="Nome da marca">
+                    </input-container-component>
+                 </div>
+
+                <div class="form-group">
+                    <input-container-component title="Logo da marca" id="newImage" idHelp="imageHelp" helpText="Selecione a logo da marca.">  
+                        <input type="file" class="form-control-file" id="newImage" aria-describedby="imageHelp" placeholder="Imagem da marca">
+                    </input-container-component>
+                </div>
+            </template>
+            <template v-slot:footer>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Salvar</button>
+            </template>
+        </modal-component>
 
     </div>
 </template>

@@ -5513,7 +5513,65 @@ var render = function render() {
     attrs: {
       id: "brandModal",
       title: "Adicionar marca"
-    }
+    },
+    scopedSlots: _vm._u([{
+      key: "content",
+      fn: function fn() {
+        return [_c("div", {
+          staticClass: "form-group"
+        }, [_c("input-container-component", {
+          attrs: {
+            title: "Marca",
+            id: "newName",
+            idHelp: "newHelp",
+            helpText: "Informe o nome da marca."
+          }
+        }, [_c("input", {
+          staticClass: "form-control",
+          attrs: {
+            type: "text",
+            id: "newName",
+            "aria-describedby": "newHelp",
+            placeholder: "Nome da marca"
+          }
+        })])], 1), _vm._v(" "), _c("div", {
+          staticClass: "form-group"
+        }, [_c("input-container-component", {
+          attrs: {
+            title: "Logo da marca",
+            id: "newImage",
+            idHelp: "imageHelp",
+            helpText: "Selecione a logo da marca."
+          }
+        }, [_c("input", {
+          staticClass: "form-control-file",
+          attrs: {
+            type: "file",
+            id: "newImage",
+            "aria-describedby": "imageHelp",
+            placeholder: "Imagem da marca"
+          }
+        })])], 1)];
+      },
+      proxy: true
+    }, {
+      key: "footer",
+      fn: function fn() {
+        return [_c("button", {
+          staticClass: "btn btn-secondary",
+          attrs: {
+            type: "button",
+            "data-bs-dismiss": "modal"
+          }
+        }, [_vm._v("Cancelar")]), _vm._v(" "), _c("button", {
+          staticClass: "btn btn-primary",
+          attrs: {
+            type: "button"
+          }
+        }, [_vm._v("Salvar")])];
+      },
+      proxy: true
+    }])
   })], 1);
 };
 
@@ -5852,28 +5910,12 @@ var render = function render() {
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "modal-body"
-  }, [_vm._v("\n               ...\n           ")]), _vm._v(" "), _vm._m(0)])])]);
+  }, [_vm._t("content")], 2), _vm._v(" "), _c("div", {
+    staticClass: "modal-footer"
+  }, [_vm._t("footer")], 2)])])]);
 };
 
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
-    staticClass: "modal-footer"
-  }, [_c("button", {
-    staticClass: "btn btn-secondary",
-    attrs: {
-      type: "button",
-      "data-bs-dismiss": "modal"
-    }
-  }, [_vm._v("Cancelar")]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-primary",
-    attrs: {
-      type: "button"
-    }
-  }, [_vm._v("Salvar")])]);
-}];
+var staticRenderFns = [];
 render._withStripped = true;
 
 
