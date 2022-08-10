@@ -2,7 +2,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <!-- CARD DE BUSCA -->
+            <div class="card mb-5">
                 <div class="card-header">Marcas</div>
 
                 <div class="card-body">
@@ -20,12 +21,28 @@
                             </input-container-component>
                         </div>
                     </div>
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-primary btn-sm float-end">Pesquisar</button>
-                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary btn-sm float-end">Pesquisar</button>
                 </div>
 
             </div>
+            <!-- FIM CARD DE BUSCA -->
+
+            <!-- CARD LISTAGEM DE MARCAS -->
+            <div class="card">
+                <div class="card-header">Relação de marcas</div>
+
+                <div class="card-body">
+                    <table-component></table-component>
+                </div>
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary btn-sm float-end">Adicionar</button>
+                </div>
+
+            </div>
+            <!-- FIM CARD LISTAGEM DE MARCAS -->
         </div>
     </div>
 </div>

@@ -23,6 +23,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('login-component', require('./components/Login.vue').default);
 Vue.component('home-component', require('./components/Home.vue').default);
 Vue.component('brands-component', require('./components/Brands.vue').default);
+Vue.component('table-component', require('./components/Table.vue').default);
 Vue.component('input-container-component', require('./components/inputContainer.vue').default);
 
 /**
