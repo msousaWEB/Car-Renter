@@ -86,7 +86,7 @@
                 brandName: '',
                 brandImage: [],
                 status:'',
-                detailStatus: [],
+                detailStatus: {},
             }
         },
         methods: {
@@ -112,11 +112,15 @@
                 axios.post(this.baseUrl, formData, config)
                     .then(response => {
                         this.status = 'sucesso'
-                        this.detailStatus = response
+                        this.detailStatus = {
+                            head: 'ID da marca cadastrada: ' + response.data.id
+                        }
                     })
                     .catch(errors => {
                         this.status = 'erro'
-                        this.detailStatus = errors.response
+                        this.detailStatus = {
+                            msg: errors.response.data.errors
+                        }
                     })
             }
         }
