@@ -41,8 +41,8 @@
         </div>
         <modal-component id="brandModal" title="Adicionar marca">
             <template v-slot:alerts>
-                <alert-component type="success"></alert-component>
-                <alert-component type="danger"></alert-component>
+                <alert-component type="success" :detail="detailStatus" title="Cadastro realizado com sucesso!" v-if="status == 'sucesso'"></alert-component>
+                <alert-component type="danger" :detail="detailStatus" title="Cadastro de marca inválido" v-if="status == 'erro'"></alert-component>
             </template>
             <template v-slot:content>
                 <div class="form-group">
@@ -68,12 +68,25 @@
 
 <script>
     export default{
+        computed: {
+            token(){
+                let token = document.cookie.split(';').find(indice => {
+                    return indice.includes('token=')
+                })
+                if(token){
+                    token = token.split('=')[1]
+                }
+
+                return token
+            }
+        },
         data() {
             return {
                 baseUrl: 'http://localhost:8000/api/v1/car-brand',
                 brandName: '',
                 brandImage: [],
-                token: document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1]
+                status:'',
+                detailStatus: [],
             }
         },
         methods: {
@@ -98,10 +111,12 @@
                 // enviando os parametros para o axios
                 axios.post(this.baseUrl, formData, config)
                     .then(response => {
-                        console.log(response)
+                        this.status = 'sucesso'
+                        this.detailStatus = response
                     })
                     .catch(errors => {
-                        console.log(errors)
+                        this.status = 'erro'
+                        this.detailStatus = errors.response
                     })
             }
         }
