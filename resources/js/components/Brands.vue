@@ -40,6 +40,10 @@
             </div>
         </div>
         <modal-component id="brandModal" title="Adicionar marca">
+            <template v-slot:alerts>
+                <alert-component type="success"></alert-component>
+                <alert-component type="danger"></alert-component>
+            </template>
             <template v-slot:content>
                 <div class="form-group">
                     <input-container-component title="Marca" id="newName" idHelp="newHelp" helpText="Informe o nome da marca.">  

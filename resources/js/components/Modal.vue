@@ -8,6 +8,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <slot name="alerts"></slot>
                 <slot name="content"></slot>
             </div>
             <div class="modal-footer">
