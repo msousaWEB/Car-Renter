@@ -137,6 +137,7 @@
                 </div>
             </template>
             <template v-slot:footer>
+                <button @click="deleteBrand()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Remover</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
             </template>
         </modal-component>
@@ -173,6 +174,34 @@
             }
         },
         methods: {
+            deleteBrand() {
+                let confirmation = confirm('Tem certeza que deseja remover esta marca?')
+
+                if(!confirmation) {
+                    return false
+                }
+
+                let url = this.apiUrl + '/' + this.$store.state.item.id
+                let formData = new FormData();
+                let config = {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': 'bearer ' + this.token
+                    }
+                } 
+
+                formData.append('_method', 'delete')
+
+                axios.post(url, formData, config)
+                    .then(response => {
+                        console.log(response, 'apagou')
+                        this.loadList()
+                    })
+                    .catch(errors => {
+                        console.log(errors.data)
+                    })
+            },
+
             searchBrand() {
                 let filter = ''
 
