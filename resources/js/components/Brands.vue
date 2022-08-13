@@ -15,7 +15,7 @@
 
                             <div class="col mb-3">
                                 <input-container-component title="Marca" id="inputName" idHelp="nameHelp" helpText="Opcional: informe o nome da marca.">  
-                                    <input v-model="serach.name" type="text" class="form-control" id="inputName" aria-describedby="nameHelp" placeholder="Nome da marca">
+                                    <input v-model="search.name" type="text" class="form-control" id="inputName" aria-describedby="nameHelp" placeholder="Nome da marca">
                                 </input-container-component>
                             </div>
                         </div>
@@ -104,12 +104,14 @@
         data() {
             return {
                 apiUrl: 'http://localhost:8000/api/v1/car-brand',
+                apiPagination: '',
+                apiFilter: '',
                 brandName: '',
                 brandImage: [],
                 status:'',
                 detailStatus: {},
                 brands: { data: []},
-                search: {id:'', name=''}
+                search: {id:'', name:''}
             }
         },
         methods: {
@@ -125,23 +127,36 @@
                         filter += key + ':like:' + this.search[key]
                     }
                 }
+                
+                if(filter != '') {
+                    this.apiPagination = 'page=1'
+                    this.apiFilter = '&query='+filter
+                } else {
+                    this.apiFilter = ''
+                }
 
+                this.loadList()
             },
+
             pagination(link) {
                 if(link.url) {
-                    this.apiUrl = link.url
+                    // this.apiUrl = link.url
+                    this.apiPagination = link.url.split('?')[1]
                     this.loadList()
                 }
             },
+
             loadList() {
                 let config = {
                     headers: {
                         'Accept': 'application/json',
                         'Authorization': 'bearer ' + this.token
                     }
-                }
+                } 
 
-                axios.get(this.apiUrl, config)
+                let url = this.apiUrl + '?' + this.apiPagination + this.apiFilter
+
+                axios.get(url, config)
                     .then(response => {
                         this.brands = response.data
                         // console.log(this.brands)
@@ -150,9 +165,11 @@
                         console.log(errors)
                     })
             },
+
             loadImage(e) {
                 this.brandImage = e.target.files
             },
+
             save() {
 
                 // programando o form semelhante ao postman
@@ -184,6 +201,7 @@
                     })
             }
         },
+
         mounted() {
             this.loadList()
         }
