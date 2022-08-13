@@ -40,7 +40,7 @@ class CarBrandController extends Controller
             $carBrandRepo->SelectAttributes($request->get('attributes'));
         } 
 
-        return response()->json($carBrandRepo->getResult(), 200);
+        return response()->json($carBrandRepo->getPaginatedResult(3), 200);
     }
 
 

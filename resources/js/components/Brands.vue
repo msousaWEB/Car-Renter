@@ -31,7 +31,7 @@
                 <card-component title="Relação de marcas">
                     <template v-slot:content>
                         <table-component 
-                        :data="brands"
+                        :data="brands.data"
                         :titles="{
                             id: {title:'ID', type: 'text'},
                             name: {title:'Marca', type: 'text'},
@@ -90,7 +90,7 @@
         },
         data() {
             return {
-                baseUrl: 'http://localhost:8000/api/v1/car-brand',
+                apiUrl: 'http://localhost:8000/api/v1/car-brand',
                 brandName: '',
                 brandImage: [],
                 status:'',
@@ -107,7 +107,7 @@
                     }
                 }
 
-                axios.get(this.baseUrl, config)
+                axios.get(this.apiUrl, config)
                     .then(response => {
                         this.brands = response.data
                         // console.log(this.brands)
@@ -135,7 +135,7 @@
                 }
 
                 // enviando os parametros para o axios
-                axios.post(this.baseUrl, formData, config)
+                axios.post(this.apiUrl, formData, config)
                     .then(response => {
                         this.status = 'sucesso'
                         this.detailStatus = {
