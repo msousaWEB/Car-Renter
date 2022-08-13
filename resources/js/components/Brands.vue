@@ -44,8 +44,8 @@
                         <div class="row">
                             <div class="col-10">
                                 <paginate-component>
-                                    <li v-for="link, key in brands.links" :key="key" class="page-item">
-                                        <a class="page-link" href="#" v-html="link.label"></a>
+                                    <li v-for="link, key in brands.links" :key="key" :class="link.active ? 'page-item active' : 'page-item'" @click="pagination(link)">
+                                        <a class="page-link" v-html="link.label"></a>
                                     </li>
                                 </paginate-component>
                             </div>
@@ -112,6 +112,12 @@
             }
         },
         methods: {
+            pagination(link) {
+                if(link.url) {
+                    this.apiUrl = link.url
+                    this.loadList()
+                }
+            },
             loadList() {
                 let config = {
                     headers: {
