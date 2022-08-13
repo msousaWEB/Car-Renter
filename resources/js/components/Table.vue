@@ -3,7 +3,7 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th scope="col" v-for="t, key in titles" :key="key">{{t}}</th>
+                <th scope="col" v-for="t, key in titles" :key="key" class="text-uppercase">{{t}}</th>
             </tr>
         </thead>
         <tbody>
