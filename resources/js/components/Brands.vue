@@ -93,7 +93,24 @@
             <template v-slot:alerts>
             </template>
             <template v-slot:content>
-                <h1>Teste</h1>
+                <div class="row">
+                    <div class="col">
+                        <input-container-component title="ID:">
+                            <input type="text" class="form-control" :value="$store.state.item.id" disabled>
+                        </input-container-component>
+                    </div>
+                    <div class="col">
+                        <input-container-component title="Marca:">
+                            <input type="text" class="form-control" :value="$store.state.item.name" disabled>
+                        </input-container-component>
+                    </div>
+                </div>
+                <input-container-component title="Data de Cadastro:">
+                    <input type="text" class="form-control" :value="$store.state.item.created_at" disabled>
+                </input-container-component>
+                <input-container-component title="Logo:">
+                    <img v-if="$store.state.item.image" :src="'storage/' + $store.state.item.image">
+                </input-container-component>
             </template>
             <template v-slot:footer>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>

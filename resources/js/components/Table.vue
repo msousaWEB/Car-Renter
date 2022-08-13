@@ -17,9 +17,25 @@
                     </span>
                 </td>
                 <td v-if="view.visible || edit || del">
-                    <button v-if="view.visible" class="btn btn-outline-primary btn-sm" title="Visualizar" :data-bs-toggle="view.dataToggle" :data-bs-target="view.dataTarget"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <button v-if="edit" class="btn btn-outline-secondary btn-sm" title="Atualizar Marca"><i class="fa-solid fa-pen-to-square"></i></button>
-                    <button v-if="del" class="btn btn-outline-danger btn-sm" title="Excluir"><i class="fa-solid fa-trash-can"></i></button>
+                    <button v-if="view.visible" 
+                        @click="setStore(obj)" 
+                        class="btn btn-outline-primary btn-sm" 
+                        title="Visualizar" 
+                        :data-bs-toggle="view.dataToggle" 
+                        :data-bs-target="view.dataTarget">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+
+                    <button v-if="edit"
+                         class="btn btn-outline-secondary btn-sm" 
+                         title="Atualizar Marca">
+                         <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+
+                    <button v-if="del" 
+                        class="btn btn-outline-danger btn-sm" 
+                        title="Excluir"><i class="fa-solid fa-trash-can"></i>
+                    </button>
                 </td>
             </tr>
         </tbody>
@@ -30,6 +46,11 @@
 <script>
     export default {
         props: ['data', 'titles', 'view', 'edit', 'del'],
+        methods: {
+            setStore(obj) {
+                this.$store.state.item = obj
+            }
+        },
         computed: {
             filteredData() {
                 let fields = Object.keys(this.titles)
