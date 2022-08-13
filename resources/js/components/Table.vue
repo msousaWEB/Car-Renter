@@ -4,7 +4,7 @@
         <thead>
             <tr>
                 <th scope="col" v-for="t, key in titles" :key="key">{{t.title}}</th>
-                <th v-if="view.visible || edit || del">Ações</th>
+                <th v-if="view.visible || edit || del.visible">Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -16,7 +16,7 @@
                         <img :src="'/storage/'+ val" width="30" length="30"/>
                     </span>
                 </td>
-                <td v-if="view.visible || edit || del">
+                <td v-if="view.visible || edit || del.visible">
                     <button v-if="view.visible" 
                         @click="setStore(obj)" 
                         class="btn btn-outline-primary btn-sm" 
@@ -32,8 +32,11 @@
                          <i class="fa-solid fa-pen-to-square"></i>
                     </button>
 
-                    <button v-if="del" 
+                    <button v-if="del.visible"
+                        @click="setStore(obj)" 
                         class="btn btn-outline-danger btn-sm" 
+                        :data-bs-toggle="del.dataToggle" 
+                        :data-bs-target="del.dataTarget"
                         title="Excluir"><i class="fa-solid fa-trash-can"></i>
                     </button>
                 </td>

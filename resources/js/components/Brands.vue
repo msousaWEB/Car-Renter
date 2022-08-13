@@ -34,7 +34,7 @@
                         :data="brands.data"
                         :view="{visible: true, dataToggle: 'modal', dataTarget:'#viewBrand'}"
                         :edit="true"
-                        :del="true"
+                        :del="{visible: true, dataToggle: 'modal', dataTarget:'#delBrand'}"
                         :titles="{
                             id: {title:'ID', type: 'text'},
                             name: {title:'Marca', type: 'text'},
@@ -117,6 +117,30 @@
             </template>
         </modal-component>
         <!-- FIM MODAL VISUALIZAR MARCAS -->
+
+        <!-- MODAL REMOVER MARCAS -->
+        <modal-component id="delBrand" title="Deseja remover esta Marca?">
+            <template v-slot:alerts>
+            </template>
+            <template v-slot:content>
+                <div class="row">
+                    <div class="col">
+                        <input-container-component title="ID:">
+                            <input type="text" class="form-control" :value="$store.state.item.id" disabled>
+                        </input-container-component>
+                    </div>
+                    <div class="col">
+                        <input-container-component title="Marca:">
+                            <input type="text" class="form-control" :value="$store.state.item.name" disabled>
+                        </input-container-component>
+                    </div>
+                </div>
+            </template>
+            <template v-slot:footer>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </template>
+        </modal-component>
+        <!-- FIM MODAL REMOVER MARCAS -->
 
     </div>
 </template>
