@@ -95,7 +95,7 @@
                 brandImage: [],
                 status:'',
                 detailStatus: {},
-                brands: [],
+                brands: { data: []},
             }
         },
         methods: {
