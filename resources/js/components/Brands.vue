@@ -30,7 +30,10 @@
                 <!-- CARD LISTAGEM DE MARCAS -->
                 <card-component title="Relação de marcas">
                     <template v-slot:content>
-                        <table-component></table-component>
+                        <table-component 
+                        :data="brands"
+                        :titles="['ID', 'Marca', 'Logo']"
+                        ></table-component>
                     </template>
                     <template v-slot:footer>
                         <button type="submit" data-bs-toggle="modal" data-bs-target="#brandModal" class="btn btn-primary btn-sm float-end">Adicionar</button>
@@ -87,9 +90,27 @@
                 brandImage: [],
                 status:'',
                 detailStatus: {},
+                brands: [],
             }
         },
         methods: {
+            loadList() {
+                let config = {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': 'bearer ' + this.token
+                    }
+                }
+
+                axios.get(this.baseUrl, config)
+                    .then(response => {
+                        this.brands = response.data
+                        // console.log(this.brands)
+                    })
+                    .catch(errors => {
+                        console.log(errors)
+                    })
+            },
             loadImage(e) {
                 this.brandImage = e.target.files
             },
@@ -123,6 +144,9 @@
                         }
                     })
             }
+        },
+        mounted() {
+            this.loadList()
         }
     }
 </script>
