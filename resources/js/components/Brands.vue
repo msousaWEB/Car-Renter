@@ -8,27 +8,27 @@
                         <div class="row">
                             <div class="col mb-3">
                                 <input-container-component title="ID" id="inputId" idHelp="idHelp" helpText="Opcional: informe o id da marca.">  
-                                    <input type="number" class="form-control" id="inputId" aria-describedby="idHelp" placeholder="ID da marca">
+                                    <input v-model="search.id" type="number" class="form-control" id="inputId" aria-describedby="idHelp" placeholder="ID da marca">
                                 </input-container-component>
                             </div>
 
 
                             <div class="col mb-3">
                                 <input-container-component title="Marca" id="inputName" idHelp="nameHelp" helpText="Opcional: informe o nome da marca.">  
-                                    <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp" placeholder="Nome da marca">
+                                    <input v-model="serach.name" type="text" class="form-control" id="inputName" aria-describedby="nameHelp" placeholder="Nome da marca">
                                 </input-container-component>
                             </div>
                         </div>
                     </template>
 
                     <template v-slot:footer>
-                        <button type="submit" class="btn btn-primary btn-sm float-end">Pesquisar</button>
+                        <button type="submit" class="btn btn-primary btn-sm float-end" @click="searchBrand()">Pesquisar</button>
                     </template>
                 </card-component>
                 <!-- FIM CARD DE BUSCA -->
 
                 <!-- CARD LISTAGEM DE MARCAS -->
-                <card-component title="Relação de marcas">
+                <card-component title="Marcas Cadastradas">
                     <template v-slot:content>
                         <table-component 
                         :data="brands.data"
@@ -109,9 +109,24 @@
                 status:'',
                 detailStatus: {},
                 brands: { data: []},
+                search: {id:'', name=''}
             }
         },
         methods: {
+            searchBrand() {
+                let filter = ''
+
+                for(let key in this.search) {
+                    if(this.search[key]) {
+                        if(filter != '') {
+                            filter += ';'
+                        }
+
+                        filter += key + ':like:' + this.search[key]
+                    }
+                }
+
+            },
             pagination(link) {
                 if(link.url) {
                     this.apiUrl = link.url
