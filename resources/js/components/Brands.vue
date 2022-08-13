@@ -41,12 +41,25 @@
                         ></table-component>
                     </template>
                     <template v-slot:footer>
-                        <button type="submit" data-bs-toggle="modal" data-bs-target="#brandModal" class="btn btn-primary btn-sm float-end">Adicionar</button>
+                        <div class="row">
+                            <div class="col-10">
+                                <paginate-component>
+                                    <li v-for="link, key in brands.links" :key="key" class="page-item">
+                                        <a class="page-link" href="#" v-html="link.label"></a>
+                                    </li>
+                                </paginate-component>
+                            </div>
+                            <div class="col">
+                                <button type="submit" data-bs-toggle="modal" data-bs-target="#brandModal" class="btn btn-primary btn-sm float-end">Adicionar</button>
+                            </div>
+                        </div>
                     </template>
                 </card-component>
                 <!-- FIM CARD LISTAGEM DE MARCAS -->
             </div>
         </div>
+
+        <!-- MODAL ADICIONAR MARCAS -->
         <modal-component id="brandModal" title="Adicionar marca">
             <template v-slot:alerts>
                 <alert-component type="success" :detail="detailStatus" title="Cadastro realizado com sucesso!" v-if="status == 'sucesso'"></alert-component>
