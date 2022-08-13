@@ -86,6 +86,20 @@
                 <button type="button" class="btn btn-primary" @click="save()">Salvar</button>
             </template>
         </modal-component>
+        <!-- FIM MODAL ADICIONAR MARCAS -->
+
+        <!-- MODAL VISUALIZAR MARCAS -->
+        <modal-component id="viewBrand" title="Visualizar Marca">
+            <template v-slot:alerts>
+            </template>
+            <template v-slot:content>
+                <h1>Teste</h1>
+            </template>
+            <template v-slot:footer>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </template>
+        </modal-component>
+        <!-- FIM MODAL VISUALIZAR MARCAS -->
 
     </div>
 </template>

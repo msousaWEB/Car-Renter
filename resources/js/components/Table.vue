@@ -17,7 +17,7 @@
                     </span>
                 </td>
                 <td>
-                    <button v-if="view" class="btn btn-outline-primary btn-sm" title="Visualizar"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button v-if="view" class="btn btn-outline-primary btn-sm" title="Visualizar" data-bs-toggle="modal" data-bs-target="#viewBrand"><i class="fa-solid fa-magnifying-glass"></i></button>
                     <button v-if="edit" class="btn btn-outline-secondary btn-sm" title="Atualizar Marca"><i class="fa-solid fa-pen-to-square"></i></button>
                     <button v-if="del" class="btn btn-outline-danger btn-sm" title="Excluir"><i class="fa-solid fa-trash-can"></i></button>
                 </td>
