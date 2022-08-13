@@ -32,7 +32,7 @@
                     <template v-slot:content>
                         <table-component 
                         :data="brands.data"
-                        :view="true"
+                        :view="{visible: true, dataToggle: 'modal', dataTarget:'#viewBrand'}"
                         :edit="true"
                         :del="true"
                         :titles="{
