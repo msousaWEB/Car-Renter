@@ -32,6 +32,9 @@
                     <template v-slot:content>
                         <table-component 
                         :data="brands.data"
+                        :view="true"
+                        :edit="true"
+                        :del="true"
                         :titles="{
                             id: {title:'ID', type: 'text'},
                             name: {title:'Marca', type: 'text'},

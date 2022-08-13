@@ -4,6 +4,7 @@
         <thead>
             <tr>
                 <th scope="col" v-for="t, key in titles" :key="key">{{t.title}}</th>
+                <th v-if="view || edit || del">Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -15,6 +16,11 @@
                         <img :src="'/storage/'+ val" width="30" length="30"/>
                     </span>
                 </td>
+                <td>
+                    <button v-if="view" class="btn btn-outline-primary btn-sm" title="Visualizar"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button v-if="edit" class="btn btn-outline-secondary btn-sm" title="Atualizar Marca"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button v-if="del" class="btn btn-outline-danger btn-sm" title="Excluir"><i class="fa-solid fa-trash-can"></i></button>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -23,7 +29,7 @@
 
 <script>
     export default {
-        props: ['data', 'titles'],
+        props: ['data', 'titles', 'view', 'edit', 'del'],
         computed: {
             filteredData() {
                 let fields = Object.keys(this.titles)
