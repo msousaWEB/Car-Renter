@@ -32,7 +32,12 @@
                     <template v-slot:content>
                         <table-component 
                         :data="brands"
-                        :titles="['ID', 'Marca', 'Logo']"
+                        :titles="{
+                            id: {title:'ID', type: 'text'},
+                            name: {title:'Marca', type: 'text'},
+                            image: {title:'Logo', type: 'image'},
+                            created_at: {title:'Data de inclusão', type: 'date'}
+                        }"
                         ></table-component>
                     </template>
                     <template v-slot:footer>
