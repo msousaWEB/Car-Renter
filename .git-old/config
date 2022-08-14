@@ -1,0 +1,20 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = https://github.com/msousaWEB/app_car_renter.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[branch "msousa/create-mvc"]
+	remote = origin
+	merge = refs/heads/msousa/create-mvc
+[branch "msousa/migrations-connect-db"]
+	remote = origin
+	merge = refs/heads/msousa/migrations-connect-db
+[remote "Car-Renter"]
+	url = https://github.com/msousaWEB/Car-Renter.git
+	fetch = +refs/heads/*:refs/remotes/Car-Renter/*

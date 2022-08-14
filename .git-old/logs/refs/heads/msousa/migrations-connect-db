@@ -1,0 +1,2 @@
+0000000000000000000000000000000000000000 39515cfb5b8dfc8d715133557f7e89ef370451df msousa <msousa.dev@outlook.com> 1659278678 -0300	branch: Created from HEAD
+39515cfb5b8dfc8d715133557f7e89ef370451df 5d235ac947466a2dfafe58f44a5b1e748be9941b msousa <msousa.dev@outlook.com> 1659280010 -0300	commit: implementing migrations, connecting to DB

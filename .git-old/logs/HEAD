@@ -1,0 +1,70 @@
+0000000000000000000000000000000000000000 d5583ed05d2dab615bd7ee6fd0fd0e0ada72c63b msousa <msousa.dev@outlook.com> 1659277737 -0300	commit (initial): first commit
+d5583ed05d2dab615bd7ee6fd0fd0e0ada72c63b d5583ed05d2dab615bd7ee6fd0fd0e0ada72c63b msousa <msousa.dev@outlook.com> 1659278456 -0300	checkout: moving from master to msousa/create-mvc
+d5583ed05d2dab615bd7ee6fd0fd0e0ada72c63b 103887afebb6eac652d1f8632ccc2a332398bc68 msousa <msousa.dev@outlook.com> 1659278490 -0300	commit: configuring models, controllers and migrations
+103887afebb6eac652d1f8632ccc2a332398bc68 d5583ed05d2dab615bd7ee6fd0fd0e0ada72c63b msousa <msousa.dev@outlook.com> 1659278605 -0300	checkout: moving from msousa/create-mvc to master
+d5583ed05d2dab615bd7ee6fd0fd0e0ada72c63b 39515cfb5b8dfc8d715133557f7e89ef370451df msousa <msousa.dev@outlook.com> 1659278609 -0300	pull --tags origin master: Fast-forward
+39515cfb5b8dfc8d715133557f7e89ef370451df 39515cfb5b8dfc8d715133557f7e89ef370451df msousa <msousa.dev@outlook.com> 1659278678 -0300	checkout: moving from master to msousa/migrations-connect-db
+39515cfb5b8dfc8d715133557f7e89ef370451df 5d235ac947466a2dfafe58f44a5b1e748be9941b msousa <msousa.dev@outlook.com> 1659280010 -0300	commit: implementing migrations, connecting to DB
+5d235ac947466a2dfafe58f44a5b1e748be9941b 39515cfb5b8dfc8d715133557f7e89ef370451df msousa <msousa.dev@outlook.com> 1659281127 -0300	checkout: moving from msousa/migrations-connect-db to master
+39515cfb5b8dfc8d715133557f7e89ef370451df 18f78d3e1141841a326c33e7ae4d4bc0de2ec3b4 msousa <msousa.dev@outlook.com> 1659281132 -0300	pull --tags origin master: Fast-forward
+18f78d3e1141841a326c33e7ae4d4bc0de2ec3b4 33cc276cb4cc898212b0fccabe0e310a81612a60 msousa <msousa.dev@outlook.com> 1659284565 -0300	commit: creating routes
+33cc276cb4cc898212b0fccabe0e310a81612a60 f1e7030fff6995eb534e5a0f3fc6c6edf1a48deb msousa <msousa.dev@outlook.com> 1659296883 -0300	commit: implementing api methods
+f1e7030fff6995eb534e5a0f3fc6c6edf1a48deb e1c326cc0cfa99d857764dba4cd37136c1016d8b msousa <msousa.dev@outlook.com> 1659309254 -0300	commit: implementing dynamic validations and rules
+e1c326cc0cfa99d857764dba4cd37136c1016d8b 257210394e52c44f8b90862407f1eaece7172d1d msousa <msousa.dev@outlook.com> 1659487640 -0300	commit: uploading images
+257210394e52c44f8b90862407f1eaece7172d1d a1182b4e26fc95d9c7261ec07dbd8fa73654c3af msousa <msousa.dev@outlook.com> 1659488885 -0300	commit: updating brand image
+a1182b4e26fc95d9c7261ec07dbd8fa73654c3af fd0a33f09b9392b1f9843627dbf488a95ed1b604 msousa <msousa.dev@outlook.com> 1659489681 -0300	commit: deleting brand images
+fd0a33f09b9392b1f9843627dbf488a95ed1b604 7af97a5ef7d705689deb9396de3e3a718449a7a3 msousa <msousa.dev@outlook.com> 1659791067 -0300	commit: implementing CarModel methods
+7af97a5ef7d705689deb9396de3e3a718449a7a3 7d6d8470441670c0d7aa120b283fba0f21d997f1 msousa <msousa.dev@outlook.com> 1659804096 -0300	commit: implementing relationships between model and brand
+7d6d8470441670c0d7aa120b283fba0f21d997f1 d74c5635984a9f234406ed19f5950905741f73d5 msousa <msousa.dev@outlook.com> 1659808444 -0300	commit: refactoring update methods (car brand and models)
+d74c5635984a9f234406ed19f5950905741f73d5 449bea1e9c03dbc1bb30b83e9c0df845a440b67c msousa <msousa.dev@outlook.com> 1659813645 -0300	commit: filtering car models
+449bea1e9c03dbc1bb30b83e9c0df845a440b67c 139dd2b31f039992e6372442122870efdabfd4e0 msousa <msousa.dev@outlook.com> 1659814624 -0300	commit: filtering car brands
+139dd2b31f039992e6372442122870efdabfd4e0 0e4b3c6bd0c54e4a189592231a55de4dfcaa555b msousa <msousa.dev@outlook.com> 1659829734 -0300	commit: implementing repository design pattern for brands
+0e4b3c6bd0c54e4a189592231a55de4dfcaa555b 0a2f413012457901e3191fe68a3a8aee1f7af729 msousa <msousa.dev@outlook.com> 1659830511 -0300	commit: implementing repository design pattern for models
+0a2f413012457901e3191fe68a3a8aee1f7af729 376364f36d69c8437852b4dbef27346a2c20a23e msousa <msousa.dev@outlook.com> 1659831803 -0300	commit: implementing abstract repository
+376364f36d69c8437852b4dbef27346a2c20a23e 25da644c7dbf5e1fb06e6e579a883b1becf13bc4 msousa <msousa.dev@outlook.com> 1659833809 -0300	commit: Rest webservice API for car resource
+25da644c7dbf5e1fb06e6e579a883b1becf13bc4 dc540d26060ba50c56123feca131686d9a8a9061 msousa <msousa.dev@outlook.com> 1659835189 -0300	commit: Rest webservice API for customer resource
+dc540d26060ba50c56123feca131686d9a8a9061 702df2ab78c9891bc7d277a3f5a1be46c7d32476 msousa <msousa.dev@outlook.com> 1659841358 -0300	commit: rest webservice API for renter resource
+702df2ab78c9891bc7d277a3f5a1be46c7d32476 e4dde08986d695d9a2cb572cb87e9ba47702e718 msousa <msousa.dev@outlook.com> 1659885832 -0300	commit: JWT auth configs
+e4dde08986d695d9a2cb572cb87e9ba47702e718 326525b167418d0a585bae94186c234f9f54d333 msousa <msousa.dev@outlook.com> 1659887737 -0300	commit: created AuthController
+326525b167418d0a585bae94186c234f9f54d333 15a5f6ea1ca4e288b18f82c227f4d1b1670713fc msousa <msousa.dev@outlook.com> 1659888311 -0300	commit: new auth middleware for all routes
+15a5f6ea1ca4e288b18f82c227f4d1b1670713fc 3354eadb9a72b1f40181f60e7901960c463a89e1 msousa <msousa.dev@outlook.com> 1659888830 -0300	commit: config protected routes
+3354eadb9a72b1f40181f60e7901960c463a89e1 8789f6989b2f7a6787d8fa9938730209e415bc93 msousa <msousa.dev@outlook.com> 1659894739 -0300	commit: JWT auth based
+8789f6989b2f7a6787d8fa9938730209e415bc93 331269b7cbc061d5af6d18ebe6cc4a30ddce0725 msousa <msousa.dev@outlook.com> 1659895489 -0300	commit: refresh method for jwt token
+331269b7cbc061d5af6d18ebe6cc4a30ddce0725 29e0c75add4bc7bb1b859ae18b4646b3a860d5d8 msousa <msousa.dev@outlook.com> 1659895935 -0300	commit: JWT logout method with valid token
+29e0c75add4bc7bb1b859ae18b4646b3a860d5d8 7e46991cbf632ea5d6b1f7e69d708a5cc8e5392d msousa <msousa.dev@outlook.com> 1659898625 -0300	commit: configuring VueJS in laravel
+7e46991cbf632ea5d6b1f7e69d708a5cc8e5392d 59881e85fdb740fd911567402125b131bed1d57e msousa <msousa.dev@outlook.com> 1659899585 -0300	commit: rendering front-end with vue.js component in blade
+59881e85fdb740fd911567402125b131bed1d57e 799e684bdb08cfc309a5392818c267d0cc2e19c8 msousa <msousa.dev@outlook.com> 1659899860 -0300	commit: finalizing login vue.js
+799e684bdb08cfc309a5392818c267d0cc2e19c8 a77285629289d3a3f0efabc4262458d511e1fd3e msousa <msousa.dev@outlook.com> 1660002977 -0300	commit: sending vue props
+a77285629289d3a3f0efabc4262458d511e1fd3e d4d8d3f35184f379d7f59a95699671c8e6853871 msousa <msousa.dev@outlook.com> 1660005959 -0300	commit: implementing csrf token with vue
+d4d8d3f35184f379d7f59a95699671c8e6853871 8d680b64df2594d1a4c74a7b3aaa86a25d0cf8f5 msousa <msousa.dev@outlook.com> 1660006209 -0300	commit: converting home into a vue component
+8d680b64df2594d1a4c74a7b3aaa86a25d0cf8f5 69407e3dd3a7e57a113ac3b58672ed3b0b3952a6 msousa <msousa.dev@outlook.com> 1660007172 -0300	commit: implementing navbar for authenticated users
+69407e3dd3a7e57a113ac3b58672ed3b0b3952a6 6c266917abae4381ec2511729bd065255d1a4740 msousa <msousa.dev@outlook.com> 1660009668 -0300	commit: created brands view/route and vue component
+6c266917abae4381ec2511729bd065255d1a4740 cc786bac289153e669dd22a587430d2fd5054ef6 msousa <msousa.dev@outlook.com> 1660010517 -0300	commit: created form to search brands
+cc786bac289153e669dd22a587430d2fd5054ef6 c700e7daa9eff6edf872349add93bc50eec64cfc msousa <msousa.dev@outlook.com> 1660011495 -0300	commit: create vue component for inputs
+c700e7daa9eff6edf872349add93bc50eec64cfc 46fde834233f13fca8bbb30cc72bfd67548bca26 msousa <msousa.dev@outlook.com> 1660091543 -0300	commit: created vue component for brands
+46fde834233f13fca8bbb30cc72bfd67548bca26 992023155b321596210729c239b1bd107db6812a msousa <msousa.dev@outlook.com> 1660092551 -0300	commit: componentizing cards with vue
+992023155b321596210729c239b1bd107db6812a 4efda954522a4c068f13c939b10b4bf2c623d7d3 msousa <msousa.dev@outlook.com> 1660093575 -0300	commit: created vue modal component for inclusion brands
+4efda954522a4c068f13c939b10b4bf2c623d7d3 286a195c4839f060e8934780edfad2331049aeb1 msousa <msousa.dev@outlook.com> 1660094247 -0300	commit: componentizing the contents and inputs of modal
+286a195c4839f060e8934780edfad2331049aeb1 7b9a8db5c951c5ad874b0d6a5cb0140d3f349db3 msousa <msousa.dev@outlook.com> 1660095851 -0300	commit: brand registration via API request
+7b9a8db5c951c5ad874b0d6a5cb0140d3f349db3 6fe0d6dfef04612a8a0e27b6b57e02aca55e3914 msousa <msousa.dev@outlook.com> 1660099477 -0300	commit: hotfix token in header request
+6fe0d6dfef04612a8a0e27b6b57e02aca55e3914 4837b359616a87b0d63d927d70087b0b84252639 msousa <msousa.dev@outlook.com> 1660263650 -0300	commit: bugfix bootstrap
+4837b359616a87b0d63d927d70087b0b84252639 645b2d3a61ebe171f58e323dc2b23a001ca4ae73 msousa <msousa.dev@outlook.com> 1660264416 -0300	commit: create alerts for brands modal
+645b2d3a61ebe171f58e323dc2b23a001ca4ae73 ca747a6ce95e0e770615be4f2e8022bdc879b5e4 msousa <msousa.dev@outlook.com> 1660269533 -0300	commit: added flow for success and fail when create brand
+ca747a6ce95e0e770615be4f2e8022bdc879b5e4 b1efa71b63f377d496012b345e5bab77d8b0f0da msousa <msousa.dev@outlook.com> 1660271381 -0300	commit: avoiding dependencies on vue components
+b1efa71b63f377d496012b345e5bab77d8b0f0da c734e35278b140099739b9214a3d57be01cd3105 msousa <msousa.dev@outlook.com> 1660349618 -0300	commit: Listing registered brands
+c734e35278b140099739b9214a3d57be01cd3105 ec1816fc339e237648fd39fd5c7f35b78af8a55c msousa <msousa.dev@outlook.com> 1660353894 -0300	commit: refactoring table vue
+ec1816fc339e237648fd39fd5c7f35b78af8a55c 0ac9f8b1a9f3b7fa61ce802627b917756bf17492 msousa <msousa.dev@outlook.com> 1660402445 -0300	commit: refactoring brands
+0ac9f8b1a9f3b7fa61ce802627b917756bf17492 9879408c3b781a5d1cb9db79a51ce041996d97fd msousa <msousa.dev@outlook.com> 1660402971 -0300	commit: including pagination on Brands
+9879408c3b781a5d1cb9db79a51ce041996d97fd 844bf23454412fe0d707e1641669fe13b7f05266 msousa <msousa.dev@outlook.com> 1660403263 -0300	commit: bugfix axios
+844bf23454412fe0d707e1641669fe13b7f05266 d0698b7de2d9d9fe19aac7b774459ffdead8f787 msousa <msousa.dev@outlook.com> 1660404375 -0300	commit: refactoring pagination pt.1
+d0698b7de2d9d9fe19aac7b774459ffdead8f787 38f65f60ba444cc7c5d49d2bed0eb31a27ff5974 msousa <msousa.dev@outlook.com> 1660408022 -0300	commit: refactoring pagination pt.2
+38f65f60ba444cc7c5d49d2bed0eb31a27ff5974 9d16c2ed5c08aa8c34fd86f9295575c51ac4dc3b msousa <msousa.dev@outlook.com> 1660410481 -0300	commit: including brand filter pt.1
+9d16c2ed5c08aa8c34fd86f9295575c51ac4dc3b d70f1d7bdcb2863ed6b9a12e900bf0e7b50fafd9 msousa <msousa.dev@outlook.com> 1660415808 -0300	commit: finalizing the brand filter
+d70f1d7bdcb2863ed6b9a12e900bf0e7b50fafd9 a6f993ff233c2b1103c6e59e5c434e38139f21cd msousa <msousa.dev@outlook.com> 1660417018 -0300	commit: including column with action buttons
+a6f993ff233c2b1103c6e59e5c434e38139f21cd 39d956f91c47acaa8a7612caf2cdfd5fb0f3380a msousa <msousa.dev@outlook.com> 1660417630 -0300	commit: nncluding modal view for brands
+39d956f91c47acaa8a7612caf2cdfd5fb0f3380a 6d2aa0472ae92455bb4ea7879a47bd66e3e4035c msousa <msousa.dev@outlook.com> 1660419124 -0300	commit: including modal view for brands
+6d2aa0472ae92455bb4ea7879a47bd66e3e4035c 37661cd357dd8d97b5d04b3a500784a15e9d888c msousa <msousa.dev@outlook.com> 1660420258 -0300	commit: including Vuex on project scope
+37661cd357dd8d97b5d04b3a500784a15e9d888c 41c7412f1a8fc129d78a073b1fe8406dd1e42b72 msousa <msousa.dev@outlook.com> 1660421399 -0300	commit: including methods on modal view brands
+41c7412f1a8fc129d78a073b1fe8406dd1e42b72 a92549ce8f50bfca1a9ba0c4d2065380695e0cd9 msousa <msousa.dev@outlook.com> 1660422063 -0300	commit: include modal for delete brands
+a92549ce8f50bfca1a9ba0c4d2065380695e0cd9 4df11ca47d1970e1131e2505a726e620c68c2cc8 msousa <msousa.dev@outlook.com> 1660423676 -0300	commit: including delete brand method
+                                                                                                                                                  

@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col">
                 <!-- CARD DE BUSCA -->
                 <card-component title="Buscar marcas">
                     <template v-slot:content>
@@ -26,7 +26,8 @@
                     </template>
                 </card-component>
                 <!-- FIM CARD DE BUSCA -->
-
+            </div>
+            <div class="col-md-7">
                 <!-- CARD LISTAGEM DE MARCAS -->
                 <card-component title="Marcas Cadastradas">
                     <template v-slot:content>
@@ -45,7 +46,7 @@
                     </template>
                     <template v-slot:footer>
                         <div class="row">
-                            <div class="col-10">
+                            <div class="col">
                                 <paginate-component>
                                     <li v-for="link, key in brands.links" :key="key" :class="link.active ? 'page-item active' : 'page-item'" @click="pagination(link)">
                                         <a class="page-link" v-html="link.label"></a>
