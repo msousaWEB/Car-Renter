@@ -133,7 +133,7 @@
                     </div>
                 </div>
                 <input-container-component title="Data de Cadastro:">
-                    <input type="text" class="form-control" :value="$store.state.item.created_at" disabled>
+                    <input type="text" class="form-control" :value="$store.state.item.created_at | dateTimeFormatGlobal" disabled>
                 </input-container-component>
                 <input-container-component title="Logo:">
                     <img v-if="$store.state.item.image" :src="'storage/' + $store.state.item.image">
