@@ -51,6 +51,8 @@
         props: ['data', 'titles', 'view', 'edit', 'del'],
         methods: {
             setStore(obj) {
+                this.$store.state.transiction.status = ''
+                this.$store.state.transiction.msg = ''
                 this.$store.state.item = obj
             }
         },

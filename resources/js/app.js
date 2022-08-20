@@ -19,7 +19,7 @@ const store = new Vuex.Store({
     state: {
         item:  {},
         transiction: {
-            status: '', message: ''
+            status: '', msg: ''
         }
     }
 })

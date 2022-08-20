@@ -122,10 +122,10 @@
         <!-- MODAL REMOVER MARCAS -->
         <modal-component id="delBrand" title="Deseja remover esta Marca?">
             <template v-slot:alerts>
-                <alert-component type="success" :detail="{message:''}" title="Marca removida com sucesso!" v-if="status == 'sucesso'"></alert-component>
-                <alert-component type="danger" :detail="{message: ''}" title="Erro ao remover a marca!" v-if="status == 'error'"></alert-component>
+                <alert-component type="success" :detail="{message:''}" title="Marca removida com sucesso!" v-if="$store.state.transiction.status == 'sucesso'"></alert-component>
+                <alert-component type="danger" :detail="{message:''}" title="Erro ao remover a marca!" v-if="$store.state.transiction.status == 'erro'"></alert-component>
             </template>
-            <template v-slot:content>
+            <template v-slot:content v-if="$store.state.transiction.status != 'sucesso'">
                 <div class="row">
                     <div class="col">
                         <input-container-component title="ID:">
@@ -140,7 +140,7 @@
                 </div>
             </template>
             <template v-slot:footer>
-                <button @click="deleteBrand()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Remover</button>
+                <button @click="deleteBrand()" type="button" class="btn btn-danger" v-if="$store.state.transiction.status != 'sucesso'">Remover</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
             </template>
         </modal-component>
@@ -195,18 +195,21 @@
 
                 formData.append('_method', 'delete')
 
-                this.$store.state.transiction.status = 'sucesso'
-                this.$store.state.transiction.message = 'Marca removida com sucesso!'
+        
 
                 console.log(this.$store.state.transiction)
-                // axios.post(url, formData, config)
-                //     .then(response => {
-                //         console.log(response, 'apagou')
-                //         this.loadList()
-                //     })
-                //     .catch(errors => {
-                //         console.log(errors.data)
-                //     })
+                axios.post(url, formData, config)
+                    .then(response => {
+                        console.log(response, 'apagou')
+                        this.$store.state.transiction.status = 'sucesso'
+                        this.$store.state.transiction.msg = response.data.msg
+                        this.loadList()
+                    })
+                    .catch(errors => {
+                        this.$store.state.transiction.status = 'erro'
+                        this.$store.state.transiction.msg = 'Erro ao remover marca!'
+                        console.log(errors.data)
+                    })
             },
 
             searchBrand() {
@@ -286,6 +289,7 @@
                         this.detailStatus = {
                             head: 'ID da marca cadastrada: ' + response.data.id
                         }
+                        this.loadList()
                     })
                     .catch(errors => {
                         this.status = 'erro'
