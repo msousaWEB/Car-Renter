@@ -177,18 +177,6 @@
 
 <script>
     export default{
-        computed: {
-            token(){
-                let token = document.cookie.split(';').find(indice => {
-                    return indice.includes('token=')
-                })
-                if(token){
-                    token = token.split('=')[1]
-                }
-
-                return token
-            }
-        },
         data() {
             return {
                 apiUrl: 'http://localhost:8000/api/v1/car-brand',
@@ -212,19 +200,13 @@
 
                 let url = this.apiUrl + '/' + this.$store.state.item.id
                 let formData = new FormData();
-                let config = {
-                    headers: {
-                        'Accept': 'application/json',
-                        'Authorization': 'bearer ' + this.token
-                    }
-                } 
 
                 formData.append('_method', 'delete')
 
         
 
                 console.log(this.$store.state.transiction)
-                axios.post(url, formData, config)
+                axios.post(url, formData)
                     .then(response => {
                         console.log(response, 'apagou')
                         this.$store.state.transiction.status = 'sucesso'
@@ -270,16 +252,10 @@
             },
 
             loadList() {
-                let config = {
-                    headers: {
-                        'Accept': 'application/json',
-                        'Authorization': 'bearer ' + this.token
-                    }
-                } 
 
                 let url = this.apiUrl + '?' + this.apiPagination + this.apiFilter
 
-                axios.get(url, config)
+                axios.get(url)
                     .then(response => {
                         this.brands = response.data
                         // console.log(this.brands)
@@ -302,9 +278,7 @@
 
                 let config = {
                     headers: {
-                        'Content-Type': 'multipart/form-data',
-                        'Accept': 'application/json',
-                        'Authorization': 'bearer ' + this.token
+                        'Content-Type': 'multipart/form-data'
                     }
                 }
 
@@ -336,9 +310,7 @@
                 let url = this.apiUrl + '/' + this.$store.state.item.id
                 let config = {
                     headers: {
-                        'Content-Type': 'multipart/form-data',
-                        'Accept': 'application/json',
-                        'Authorization': 'bearer ' + this.token
+                        'Content-Type': 'multipart/form-data'
                     }
                 }
 
