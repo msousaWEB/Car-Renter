@@ -92,7 +92,8 @@
         <!-- MODAL ATUALIZAR MARCAS -->
         <modal-component id="editBrand" title="Atualizar marca">
             <template v-slot:alerts>
-                
+                <alert-component type="success" :detail="{message:''}" title="Marca atualizada com sucesso!" v-if="$store.state.transiction.status == 'sucesso'"></alert-component>
+                <alert-component type="danger" :detail="{message:''}" title="Erro ao atualizar a marca!" v-if="$store.state.transiction.status == 'erro'"></alert-component>
             </template>
             <template v-slot:content>
                 <div class="form-group">
@@ -343,11 +344,14 @@
 
                 axios.post(url, formData, config)
                     .then(response => {
-                        console.log('atualizado', response)
+                        this.$store.state.transiction.status = 'sucesso'
+                        this.$store.state.transiction.msg = 'Marca atualizada!'
                         editImage.value = ''
                         this.loadList()
                     })
                     .catch(errors => {
+                        this.$store.state.transiction.status = 'erro'
+                        this.$store.state.transiction.msg = errors.response.data.errors
                         console.log('erros', errors.response)
                     })
 
