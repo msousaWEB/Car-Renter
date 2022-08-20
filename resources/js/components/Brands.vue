@@ -97,7 +97,7 @@
             <template v-slot:content>
                 <div class="form-group">
                     <input-container-component title="Marca" id="editName" idHelp="editNameHelp" helpText="Informe o nome da marca.">  
-                        <input v-model="brandName" type="text" class="form-control" id="editName" aria-describedby="newHelp" placeholder="Nome da marca">
+                        <input type="text" class="form-control" id="editName" aria-describedby="newHelp" placeholder="Nome da marca" v-model="$store.state.item.name">
                     </input-container-component>
                  </div>
 
@@ -325,7 +325,29 @@
             },
 
             edit() {
-                console.log(this.$store.state.item)
+                let formData = new FormData();
+                formData.append('_method', 'patch')
+                formData.append('name', this.$store.state.item.name)
+                formData.append('image', this.brandImage[0])
+
+                let url = this.apiUrl + '/' + this.$store.state.item.id
+                let config = {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                        'Accept': 'application/json',
+                        'Authorization': 'bearer ' + this.token
+                    }
+                }
+
+                axios.post(url, formData, config)
+                    .then(response => {
+                        console.log('atualizado', response)
+                        this.loadList()
+                    })
+                    .catch(errors => {
+                        console.log('erros', errors.response)
+                    })
+
             }
         },
 

@@ -31,7 +31,7 @@
                          class="btn btn-outline-secondary btn-sm" 
                          title="Atualizar Marca"
                         :data-bs-toggle="edit.dataToggle" 
-                        :data-bs-target="edit.dataTarget">>
+                        :data-bs-target="edit.dataTarget">
                          <i class="fa-solid fa-pen-to-square"></i>
                     </button>
 
