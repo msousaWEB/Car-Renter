@@ -34,7 +34,7 @@
                         <table-component 
                         :data="brands.data"
                         :view="{visible: true, dataToggle: 'modal', dataTarget:'#viewBrand'}"
-                        :edit="true"
+                        :edit="{visible:true, dataToggle: 'modal', dataTarget: '#editBrand'}"
                         :del="{visible: true, dataToggle: 'modal', dataTarget:'#delBrand'}"
                         :titles="{
                             id: {title:'ID', type: 'text'},
@@ -88,6 +88,31 @@
             </template>
         </modal-component>
         <!-- FIM MODAL ADICIONAR MARCAS -->
+
+        <!-- MODAL ATUALIZAR MARCAS -->
+        <modal-component id="editBrand" title="Atualizar marca">
+            <template v-slot:alerts>
+                
+            </template>
+            <template v-slot:content>
+                <div class="form-group">
+                    <input-container-component title="Marca" id="editName" idHelp="editNameHelp" helpText="Informe o nome da marca.">  
+                        <input v-model="brandName" type="text" class="form-control" id="editName" aria-describedby="newHelp" placeholder="Nome da marca">
+                    </input-container-component>
+                 </div>
+
+                <div class="form-group">
+                    <input-container-component title="Logo da marca" id="editImage" idHelp="editImageHelp" helpText="Selecione a logo da marca.">  
+                        <input @change="loadImage($event)" type="file" class="form-control-file" id="editImage" aria-describedby="imageHelp" placeholder="Imagem da marca">
+                    </input-container-component>
+                </div>
+            </template>
+            <template v-slot:footer>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" @click="edit()">Atualizar</button>
+            </template>
+        </modal-component>
+        <!-- FIM MODAL ATUALIZAR MARCAS -->
 
         <!-- MODAL VISUALIZAR MARCAS -->
         <modal-component id="viewBrand" title="Visualizar Marca">
@@ -297,6 +322,10 @@
                             msg: errors.response.data.errors
                         }
                     })
+            },
+
+            edit() {
+                console.log(this.$store.state.item)
             }
         },
 

@@ -4,7 +4,7 @@
         <thead>
             <tr>
                 <th scope="col" v-for="t, key in titles" :key="key">{{t.title}}</th>
-                <th v-if="view.visible || edit || del.visible">Ações</th>
+                <th v-if="view.visible || edit.visible || del.visible">Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -16,7 +16,7 @@
                         <img :src="'/storage/'+ val" width="30" length="30"/>
                     </span>
                 </td>
-                <td v-if="view.visible || edit || del.visible">
+                <td v-if="view.visible || edit.visible || del.visible">
                     <button v-if="view.visible" 
                         @click="setStore(obj)" 
                         class="btn btn-outline-primary btn-sm" 
@@ -26,9 +26,12 @@
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
 
-                    <button v-if="edit"
+                    <button v-if="edit.visible"
+                        @click="setStore(obj)"                       
                          class="btn btn-outline-secondary btn-sm" 
-                         title="Atualizar Marca">
+                         title="Atualizar Marca"
+                        :data-bs-toggle="edit.dataToggle" 
+                        :data-bs-target="edit.dataTarget">>
                          <i class="fa-solid fa-pen-to-square"></i>
                     </button>
 
