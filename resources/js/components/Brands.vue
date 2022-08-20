@@ -122,6 +122,8 @@
         <!-- MODAL REMOVER MARCAS -->
         <modal-component id="delBrand" title="Deseja remover esta Marca?">
             <template v-slot:alerts>
+                <alert-component type="success" :detail="{message:''}" title="Marca removida com sucesso!" v-if="status == 'sucesso'"></alert-component>
+                <alert-component type="danger" :detail="{message: ''}" title="Erro ao remover a marca!" v-if="status == 'error'"></alert-component>
             </template>
             <template v-slot:content>
                 <div class="row">
@@ -193,14 +195,18 @@
 
                 formData.append('_method', 'delete')
 
-                axios.post(url, formData, config)
-                    .then(response => {
-                        console.log(response, 'apagou')
-                        this.loadList()
-                    })
-                    .catch(errors => {
-                        console.log(errors.data)
-                    })
+                this.$store.state.transiction.status = 'sucesso'
+                this.$store.state.transiction.message = 'Marca removida com sucesso!'
+
+                console.log(this.$store.state.transiction)
+                // axios.post(url, formData, config)
+                //     .then(response => {
+                //         console.log(response, 'apagou')
+                //         this.loadList()
+                //     })
+                //     .catch(errors => {
+                //         console.log(errors.data)
+                //     })
             },
 
             searchBrand() {
