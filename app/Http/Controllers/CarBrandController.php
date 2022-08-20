@@ -105,15 +105,20 @@ class CarBrandController extends Controller
         } else {
             $request->validate($carBrand->rules(), $carBrand->feedback());
         }
-        //Remove a imagem anterior
-        if($request->file('image')) {
-            Storage::disk('public')->delete($carBrand->image);
-        }
-        $image = $request->file('image');
-        $image_urn = $image->store('images', 'public');
 
+        // Preencher obj brand com dados do request
         $carBrand->fill($request->all());
-        $carBrand->image = $image_urn;
+        // Verificar se a imagem está no request
+        if($request->file('image')) {
+            //   Remove a imagem anterior
+            if($request->file('image')) {
+                Storage::disk('public')->delete($carBrand->image);
+                $image = $request->file('image');
+                $image_urn = $image->store('images', 'public');
+                $carBrand->image = $image_urn;
+            }
+        }
+
         $carBrand->save();
 
         return response()->json($carBrand, 200);

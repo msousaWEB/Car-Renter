@@ -328,7 +328,9 @@
                 let formData = new FormData();
                 formData.append('_method', 'patch')
                 formData.append('name', this.$store.state.item.name)
-                formData.append('image', this.brandImage[0])
+                if(this.brandImage[0]){
+                    formData.append('image', this.brandImage[0])
+                }
 
                 let url = this.apiUrl + '/' + this.$store.state.item.id
                 let config = {
@@ -342,6 +344,7 @@
                 axios.post(url, formData, config)
                     .then(response => {
                         console.log('atualizado', response)
+                        editImage.value = ''
                         this.loadList()
                     })
                     .catch(errors => {
